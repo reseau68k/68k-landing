@@ -20,7 +20,7 @@ class DefaultController extends Controller {
      * @Route("/", name="homepage")
      * @Method("GET")
      */
-    public function indexAction(Request $request) : Response {
+    public function indexAction(Request $request) {
         return $this->render('AppBundle::hello.html.twig', array(
             'inscrits' => $this->getInscrits()
         ));
@@ -30,7 +30,7 @@ class DefaultController extends Controller {
      * @Route("/", name="submit")
      * @Method("POST")
      */
-    public function submitAction(Request $request) : Response {
+    public function submitAction(Request $request) {
 
         $validator = $this->get('validator');
         $em = $this->get('doctrine.orm.entity_manager');
@@ -81,14 +81,14 @@ class DefaultController extends Controller {
     /**
      * @Route("/done", name="done")
      */
-    public function doneAction(Request $request) : Response {
+    public function doneAction(Request $request) {
         return $this->render('AppBundle::hello.html.twig', [
             'done' => true,
             'inscrits' => $this->getInscrits()
         ]);
     }
 
-    protected function getInscrits(): array {
+    protected function getInscrits() {
         return array('Net Gusto', 'Bob <strong>Ballard</strong>');
     }
 }
