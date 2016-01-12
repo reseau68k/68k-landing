@@ -22,7 +22,7 @@ class DefaultController extends Controller {
      */
     public function indexAction(Request $request) {
         return $this->render('AppBundle::hello.html.twig', array(
-            'inscrits' => $this->getInscrits()
+            #'inscrits' => $this->getInscrits()
         ));
     }
 
