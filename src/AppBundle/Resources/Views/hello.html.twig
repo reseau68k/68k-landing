@@ -1,0 +1,220 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}68k - Fédérons la communauté numérique du Haut-Rhin{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="canonical" href="http://68k.io" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@68k_io" />
+<meta property="og:url" content="http://68k.io" />
+<meta property="og:title" content="68k - Fédérons la communauté numérique du Haut-Rhin" />
+<meta property="og:description" content="68K regroupe les entrepreneurs et les freelances animant la scène numérique du Haut-Rhin, est entièrement gratuit, et le restera toujours." />
+<meta property="og:image" content="http://localhost:8000/static/logo-68k-darkbg-slim.png" />
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+body {
+    background-color: #3B5998;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+</style>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+{% endblock %}
+
+{% macro form() %}
+
+<div class="card white darken-1 hoverable">
+    <div class="card-content blue-grey-text">
+        <span class="card-title">Enregistrez-vous</span>
+        <p>La plateforme en ligne <strong>68K</strong> sera ouverte au courant du <strong>premier semestre 2016</strong>.</p>
+        <p>Inscrivez-vous dès maintenant pour être informé du lancement de <strong>68K</strong>.</p>
+    </div>
+    <div class="card-action">
+
+        {% if app.session.flashbag.has('error') %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                 <div class="card-panel red darken-2">
+                    <span class="white-text">{{ flashMessage }}</span>
+                </div>
+            {% endfor %}
+            <br />
+        {% endif %}
+
+        <div class="row">
+            <form class="col s12" action="/" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" name="email" value="{{email|default('')}}">
+                        <label for="email">Email (gardé secret)</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="email" type="text" class="validate" name="nom" value="{{nom|default('')}}">
+                        <label for="email">Nom (publié !)</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <a class="waves-effect waves-light btn-large" style="background-color: #3B5998" onclick="document.forms[0].submit();"><i class="material-icons right">check_circle</i>Hoplà !</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro done() %}
+    <div class="card white darken-1 hoverable">
+        <div class="card-content blue-grey-text">
+            <span class="card-title">Merci de votre inscription !!</span>
+            <div class="card-action">
+                <p>La plateforme en ligne <strong>68K</strong> sera ouverte au courant du <strong>premier semestre 2016</strong>.</p>
+                <p>Nous vous contacterons par email à l'ouverture de la plateforme, pour vous permettre de créer votre profil.</p>
+            </div>
+
+            <span class="card-title">Aidez-nous à grandir en passant le mot</span>
+            <div class="card-action">
+                <p><a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{ "Je viens de m'inscrire à 68k, le groupement des acteurs numériques du Haut-Rhin ! @68k_io"|url_encode() }}" data-size="large">Tweet</a></p>
+                <p>&nbsp;</p>
+                <div class="fb-page" data-href="https://www.facebook.com/reseau68k" data-tabs="timeline" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/reseau68k"><a href="https://www.facebook.com/reseau68k">68K</a></blockquote></div></div>
+            </div>
+        </div>
+    </div>
+    {# Twitter #}
+    <script>window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+    {# Facebook #}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+{% endmacro %}
+
+{% import _self as partials %}
+
+{% block body %}
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col s8 offset-s2 m6 offset-m3 l4 offset-l4 center-align" style="margin-top: 2rem;">
+                    <a href="/"><img src="/static/logo-68k-darkbg-slim.png" class="responsive-img" /></a>
+                </div>
+            </div>
+            <div class="row white-text">
+                <div class="col s8 offset-s2">
+                    <p class="flow-text center-align"><strong>68K</strong> regroupe les entrepreneurs et les freelances animant la scène numérique du Haut-Rhin.<br /><strong>68K</strong> est entièrement gratuit, et le restera toujours.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col s12 m10 l9" style="margin: 0 auto; float: none">
+
+                    {% if done|default(false) %}
+                        {{ partials.done() }}
+                    {% else %}
+                        {{ partials.form() }}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        <p>&nbsp;</p>
+
+        <div class="container white-text">
+            <p><strong>68K est plus qu'un réseau social en ligne</strong>.</p>
+            <p>En plus de regrouper les acteurs de l'économie numérique du Haut-Rhin, <strong>68K</strong> propose à ses inscrits de la visibilité en ligne, des services d'échange de mission et de recherche de prestataire, l'organisation de meetups réguliers pour animer la scène locale, et bientôt un espace de coworking.</p>
+            <p>Convaincus que la gratuité et la transparence sont indispensables pour favoriser les échanges, <strong>les données de profil des membres de 68K seront publiques</strong> (en dehors de l'adresse email, publiée sur opt-in uniquement).</p>
+        </div>
+
+        <p>&nbsp;</p>
+
+    </main>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="white-text">Contactez-nous</h5>
+                    <p class="grey-text text-lighten-4">
+                        <a href="https://twitter.com/68k_io" target="_blank" class="white-text">Sur Twitter @68k_io</a><br />
+                        <a href="https://www.facebook.com/reseau68K" target="_blank" class="white-text">Sur Facebook</a><br />
+                        <a href="mailto:hello@68k.io" class="white-text">Par email à hello@68k.io</a><br />
+                    </p>
+                </div>
+                <div class="col s12 m6 l4 offset-l2">
+                    <h5 class="white-text">Ils nous soutiennent</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="http://netgusto.com/">Net Gusto</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.publicore.net/">Publicore</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.square-colmar.fr/">Square coworking</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 68K
+            </div>
+        </div>
+    </footer>
+
+    {#<aside>
+        <div class="container white-text">
+            <h2>Les inscrits 68K</h2>
+            <ul>
+                {% for inscrit in inscrits %}
+                    <li>{{ inscrit }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </aside>#}
+
+{# Google Analytics #}
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72328957-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+{% endblock %}

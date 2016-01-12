@@ -1,0 +1,23 @@
+AppBundle\Entity\Preinscription:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\PreinscriptionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: 255
+
+        nom:
+            type: string
+            length: 255
+
+        createdat:
+            type: datetime
+
+    lifecycleCallbacks: {  }
