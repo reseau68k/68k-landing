@@ -21,9 +21,7 @@ class DefaultController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
-        return $this->render('AppBundle::hello.html.twig', array(
-            #'inscrits' => $this->getInscrits()
-        ));
+        return $this->render('AppBundle::hello.html.twig');
     }
 
     /**
@@ -74,7 +72,6 @@ class DefaultController extends Controller {
         return $this->render('AppBundle::hello.html.twig', [
             'email' => $email,
             'nom' => $nom,
-            'inscrits' => $this->getInscrits()
         ]);
     }
 
@@ -84,11 +81,14 @@ class DefaultController extends Controller {
     public function doneAction(Request $request) {
         return $this->render('AppBundle::hello.html.twig', [
             'done' => true,
-            'inscrits' => $this->getInscrits()
         ]);
     }
 
-    protected function getInscrits() {
-        return array('Net Gusto', 'Bob <strong>Ballard</strong>');
+    /**
+     * @Route("/mission", name="mission")
+     * @Method("GET")
+     */
+    public function missionAction(Request $request) {
+        return $this->render('AppBundle::mission.html.twig');
     }
 }
