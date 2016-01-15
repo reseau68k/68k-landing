@@ -47,7 +47,12 @@ main {
             </div>
             <div class="row white-text">
                 <div class="col s8 offset-s2">
-                    <p class="flow-text center-align">{% block baseline %}<strong>68K</strong> regroupe les entrepreneurs et les freelances animant la scène numérique du Haut-Rhin.<br /><strong>68K</strong> est entièrement gratuit, et le restera toujours.{% endblock %}</p>
+                    {% block baseline %}
+                    <p class="flow-text center-align">
+                        <strong>68K</strong> regroupe les entrepreneurs et les freelances animant la scène numérique du Haut-Rhin.<br /><strong>68K</strong> est entièrement gratuit, et le restera toujours.<br />
+                    </p>
+                    <p class="center-align"><a href="/mission" class="white-text">Lisez notre lettre de mission</a></p>
+                    {% endblock %}
                 </div>
             </div>
         </div>
