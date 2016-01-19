@@ -1,4 +1,6 @@
 68k-landing
 ===========
 
-A Symfony project created on January 12, 2016, 10:28 am.
+La landing page du projet 68K. Open-Source, évidemment !
+
+N'hésitez pas soumettre vos pull requests !
